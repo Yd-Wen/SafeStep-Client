@@ -1,6 +1,14 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path" : "pages/launch/launch",
+			"style" : 
+			{
+				"navigationBarTitleText" : "启动",
+				"navigationStyle": "custom"
+			}
+		},
+		{
 			"path" : "pages/home/home",
 			"style" : 
 			{
@@ -8,10 +16,10 @@
 			}
 		},
 		{
-			"path" : "pages/monitor/monitor",
+			"path" : "pages/status/status",
 			"style" : 
 			{
-				"navigationBarTitleText" : "监控"
+				"navigationBarTitleText" : "状态"
 			}
 		},
 		{
@@ -37,21 +45,28 @@
 	},
 	"uniIdRouter": {},
 	"tabBar": {
-		"color": "#fff000",
-		"selectedColor": "#fff",
+		"color": "#515151",
+		"selectedColor": "#28C76F",
 		"list": [
 			{
 				"text": "首页",
-				"pagePath": "pages/home/home"
+				"pagePath": "pages/home/home",
+				"iconPath": "static/icon/tab_home.png",
+				"backgroundImage": "static/icon/tab_home.png",
+				"selectedIconPath": "static/icon/tab_home_selected.png"
 			},
 			{
-				"pagePath": "pages/monitor/monitor"
+				"text": "状态",
+				"pagePath": "pages/status/status",
+				"iconPath": "static/icon/tab_status.png",
+				"selectedIconPath": "static/icon/tab_status_selected.png"
 			},
 			{
 				"text": "我的",
-				"pagePath": "pages/my/my"
+				"pagePath": "pages/my/my",
+				"iconPath": "static/icon/tab_my.png",
+				"selectedIconPath": "static/icon/tab_my_selected.png"
 			}
-
 		]
 	}
 }

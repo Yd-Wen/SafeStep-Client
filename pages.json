@@ -23,7 +23,7 @@
 			}
 		},
 		{
-			"path" : "pages/my/my",
+			"path" : "pages/user/user",
 			"style" : 
 			{
 				"navigationBarTitleText" : "我的"
@@ -34,6 +34,20 @@
 			"style" : 
 			{
 				"navigationBarTitleText" : "测试"
+			}
+		},
+		{
+			"path" : "pages/login/login",
+			"style" : 
+			{
+				"navigationBarTitleText" : "登录"
+			}
+		},
+		{
+			"path" : "pages/register/register",
+			"style" : 
+			{
+				"navigationBarTitleText" : "注册"
 			}
 		}
 	],
@@ -63,7 +77,7 @@
 			},
 			{
 				"text": "我的",
-				"pagePath": "pages/my/my",
+				"pagePath": "pages/user/user",
 				"iconPath": "static/icon/tab_my.png",
 				"selectedIconPath": "static/icon/tab_my_selected.png"
 			}

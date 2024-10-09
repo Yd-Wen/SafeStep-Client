@@ -18,13 +18,13 @@
 		<swiper class="swiper" circular indicator-dots indicator-color="rgba(255, 255, 255, 0.5)" 
 		indicator-active-color="rgba(255, 255, 255, 1)" autoplay interval="3000" duration="1000">
 			<swiper-item class="item">
-				<image src="/static/test/1.jpg" mode="aspectFill"></image>
+				<image src="/static/image/launch/launch_1.png" mode="aspectFill"></image>
 			</swiper-item>
 			<swiper-item class="item">
-				<image src="/static/test/2.jpg" mode="aspectFill"></image>
+				<image src="/static/image/launch/launch_1.png" mode="aspectFill"></image>
 			</swiper-item>
 			<swiper-item class="item">
-				<image src="/static/test/3.jpg" mode="aspectFill"></image>
+				<image src="/static/image/launch/launch_1.png" mode="aspectFill"></image>
 			</swiper-item>
 		</swiper>
 	</view>

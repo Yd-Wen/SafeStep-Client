@@ -8,7 +8,7 @@
 	defineProps({
 		url:{
 			type:String,
-			default:'/static/logo.png'
+			default:'/static/image/logo.png'
 		}
 	})
 </script>
@@ -18,13 +18,9 @@
 		width: 50rpx;
 		height: 50rpx;
 		margin: 0 10rpx;
-		border-radius: 50%; //圆形
-		overflow: hidden; //给父级加上圆角时隐藏图像
 		image{
 			width: 100%;
 			height: 100%;
-			size: 28rpx;
-
 		}
 	}
 </style>

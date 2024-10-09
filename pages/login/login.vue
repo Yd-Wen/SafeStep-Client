@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<uni-easyinput  v-model="" placeholder="dddd" />
+		
 	</view>
 </template>
 

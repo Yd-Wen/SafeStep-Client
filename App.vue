@@ -13,5 +13,6 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
+	@import "@/common/css/self.css"
 </style>

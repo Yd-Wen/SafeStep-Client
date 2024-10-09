@@ -3,17 +3,17 @@
 		<ssc-profile nickname='张三' uid="102333"/>
 		
 		<view class="selection">
-			<ssc-option url='/static/icon/setting_device.png' text='设备'/>
+			<ssc-option url='/static/image/setting/device.png' text='设备'/>
 			<view class="border"/>
-			<ssc-option url='/static/icon/setting_device.png' text='设备'/>
+			<ssc-option url='/static/image/setting/device.png' text='设备'/>
 			<view class="border"/>
-			<ssc-option url='/static/icon/setting_contact.png' text='联系人' class="last"/>
+			<ssc-option url='/static/image/setting/contact.png' text='联系人' class="last"/>
 		</view>	
 		
 		<view class="selection">
-			<ssc-option url='/static/icon/setting_device.png' text='设备'/>
+			<ssc-option url='/static/image/setting/device.png' text='设备'/>
 			<view class="border"/>
-			<ssc-option url='/static/icon/setting_contact.png' text='联系人' class="last"/>
+			<ssc-option url='/static/image/setting/contact.png' text='联系人' class="last"/>
 		</view>	
 
 	</view>
@@ -25,6 +25,7 @@
 
 <style lang="scss">
 	.userLayout{
+		margin-top: 100rpx;
 		.selection{
 			width: 700rpx;
 			margin: 50rpx auto;

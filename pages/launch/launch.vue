@@ -4,33 +4,33 @@
 		indicator-active-color="rgba(255, 255, 255, 1)">
       <swiper-item>
         <view class="img">
-          <image src="/static/icon/launch_1.png" mode=""></image>
+          <image src="/static/image/launch/launch_1.png" mode=""></image>
         </view>
         <view class="context">
           <view class="tit">
-            健康步伐APP
+            平安步APP
           </view>
           <view class="desc">
-            — 状态监测 预警推送 —
+            — 监测记录 即刻查看 —
           </view>
         </view>
       </swiper-item>
       <swiper-item>
         <view class="img">
-          <image src="/static/icon/launch_2.png" mode=""></image>
+          <image src="/static/image/launch/launch_2.png" mode=""></image>
         </view>
         <view class="context">
           <view class="tit">
-            健康步伐APP
+            平安步APP
           </view>
           <view class="desc">
-            — 危险记录 即刻查看 —
+            — 危险状态 即刻推送 —
           </view>
         </view>
       </swiper-item>
       <swiper-item>
         <view class="img">
-          <image src="/static/icon/launch_3.png" mode=""></image>
+          <image src="/static/image/launch/launch_3.png" mode=""></image>
         </view>
         <view class="context">
           <view class="tit endTxt">
@@ -70,7 +70,7 @@
 
   swiper-item .img {
     position: fixed;
-    top: 250rpx;
+    top: 350rpx;
     left: 50%;
     transform: translateX(-50%);
   }

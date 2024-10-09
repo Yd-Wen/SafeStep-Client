@@ -4,7 +4,6 @@
 			"path" : "pages/launch/launch",
 			"style" : 
 			{
-				"navigationBarTitleText" : "启动",
 				"navigationStyle": "custom"
 			}
 		},
@@ -26,7 +25,7 @@
 			"path" : "pages/user/user",
 			"style" : 
 			{
-				"navigationBarTitleText" : "我的"
+				"navigationStyle": "custom"
 			}
 		},
 		{
@@ -52,10 +51,9 @@
 		}
 	],
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "平安步APP",
+		"navigationBarBackgroundColor": "#28C76F"
 	},
 	"uniIdRouter": {},
 	"tabBar": {
@@ -65,21 +63,20 @@
 			{
 				"text": "首页",
 				"pagePath": "pages/home/home",
-				"iconPath": "static/icon/tab_home.png",
-				"backgroundImage": "static/icon/tab_home.png",
-				"selectedIconPath": "static/icon/tab_home_selected.png"
+				"iconPath": "static/image/tabbar/home.png",
+				"selectedIconPath": "static/image/tabbar/home_selected.png"
 			},
 			{
 				"text": "状态",
 				"pagePath": "pages/status/status",
-				"iconPath": "static/icon/tab_status.png",
-				"selectedIconPath": "static/icon/tab_status_selected.png"
+				"iconPath": "static/image/tabbar/status.png",
+				"selectedIconPath": "static/image/tabbar/status_selected.png"
 			},
 			{
 				"text": "我的",
 				"pagePath": "pages/user/user",
-				"iconPath": "static/icon/tab_my.png",
-				"selectedIconPath": "static/icon/tab_my_selected.png"
+				"iconPath": "static/image/tabbar/user.png",
+				"selectedIconPath": "static/image/tabbar/user_selected.png"
 			}
 		]
 	}

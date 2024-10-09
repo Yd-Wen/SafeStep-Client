@@ -14,7 +14,7 @@
 	defineProps({
 		url:{
 			type:String,
-			default:'/static/logo.png'
+			default:'/static/image/logo.png'
 		},
 		text:{
 			type:String,
@@ -36,7 +36,8 @@
 			align-items: center;
 			.text{
 				padding-left: 10rpx;
-				color: #666666;
+				color: $ssc-color-paragraph;
+				font-size: $ssc-font-size-paragraph;
 			}
 		}
 		.right{

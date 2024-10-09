@@ -35,8 +35,8 @@
 		.avatar{
 			width: 160rpx;
 			height: 160rpx;
-			border: 1px solid #ababab ;
-			border-radius: 50%; //圆形
+			border: 1px solid $ssc-color-border-grey ;
+			border-radius: $ssc-border-radius-circle; //圆形
 			overflow: hidden; //给父级加上圆角时隐藏图像
 			image{
 				width: 100%;
@@ -44,13 +44,13 @@
 			}
 		}
 		.nickname{
-			font-size: 40rpx;
-			color: #333333;
+			font-size: $ssc-font-size-subtitle;
+			color: $ssc-color-subtitle;
 			padding: 20rpx 0;
 		}
 		.uid{
-			font-size: 32rpx;
-			color: #ababab;
+			font-size: $ssc-font-size-hint;
+			color: $ssc-color-hint;
 		}
 	}
 </style>

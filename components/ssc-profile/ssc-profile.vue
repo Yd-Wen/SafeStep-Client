@@ -35,7 +35,7 @@
 		.avatar{
 			width: 160rpx;
 			height: 160rpx;
-			border: 1px solid $ssc-color-border-grey ;
+			border: 1rpx solid $ssc-color-border-grey ;
 			border-radius: $ssc-border-radius-circle; //圆形
 			overflow: hidden; //给父级加上圆角时隐藏图像
 			image{

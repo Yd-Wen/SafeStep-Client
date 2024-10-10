@@ -1,19 +1,29 @@
 <template>
 	<view class="userLayout">
-		<ssc-profile nickname='张三' uid="102333"/>
+		<ssc-profile nickname='未登录用户' uid="100000"/>
 		
 		<view class="selection">
-			<ssc-option url='/static/image/setting/device.png' text='设备'/>
+			<ssc-option url='/static/image/setting/profile.png' text='个人资料'/>
 			<view class="border"/>
-			<ssc-option url='/static/image/setting/device.png' text='设备'/>
-			<view class="border"/>
-			<ssc-option url='/static/image/setting/contact.png' text='联系人' class="last"/>
+			<ssc-option url='/static/image/setting/pwd.png' text='修改密码'/>
 		</view>	
 		
 		<view class="selection">
-			<ssc-option url='/static/image/setting/device.png' text='设备'/>
+			<ssc-option url='/static/image/setting/device.png' text='设备管理'/>
 			<view class="border"/>
-			<ssc-option url='/static/image/setting/contact.png' text='联系人' class="last"/>
+			<ssc-option url='/static/image/setting/contact.png' text='联系人管理'/>
+			<view class="border"/>
+			<ssc-option url='/static/image/setting/activity.png' text='活动历史' class="last"/>
+			<view class="border"/>
+			<ssc-option url='/static/image/setting/alarm.png' text='报警历史' class="last"/>
+			<view class="border"/>
+			<ssc-option url='/static/image/setting/alarm_mode.png' text='报警方式' class="last"/>
+		</view>	
+		
+		<view class="selection">
+			<ssc-option url='/static/image/setting/update.png' text='检查更新'/>
+			<view class="border"/>
+			<ssc-option url='/static/image/setting/privacy.png' text='隐私政策' class="last"/>
 		</view>	
 
 	</view>

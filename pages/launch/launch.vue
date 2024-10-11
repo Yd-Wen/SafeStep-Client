@@ -104,17 +104,17 @@
 
   swiper-item:nth-child(1) {
     height: 100%;
-    background-color: rgb(25, 219, 204);
+    background-color: #19DBCC;
   }
 
   swiper-item:nth-child(2) {
     height: 100%;
-    background-color: rgb(0, 206, 222);
+    background-color: #409eff;
   }
 
   swiper-item:nth-child(3) {
     height: 100%;
-    background-color: rgb(146, 147, 240);
+    background-color: #9293F0;
   }
 
   /* 这里无法兼容 需要分开写 */

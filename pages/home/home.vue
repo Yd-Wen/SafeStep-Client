@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<ssc-banner></ssc-banner>
+		<ssc-banner/>
 	</view>
 </template>
 

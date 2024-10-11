@@ -4,12 +4,28 @@
 			<view class="text">注册</view>
 			<image src="/static/image/welcome.png" mode="aspectFill"></image>
 		</view>
-		<view class="forms">
-			<input type="text" placeholder="请输入手机号"/>
-			<input type="text" placeholder="请输入验证码"/>
+		<view class="form">
+			<view class="content">
+				<image src="/static/image/account.png" mode="aspectFill"/>
+				<view class="account">
+					<input type="number" maxlength="11" placeholder="请输入手机号"/>
+				</view>
+			</view>
+			<view class="content">
+				<image src="/static/image/code.png" mode="aspectFill"/>
+				<view class="code">
+					<input type="number" placeholder="请输入验证码"/>
+					<view class="vBorder"/>
+					<view class="getCode">获取验证码</view>
+				</view>
+			</view>
 		</view>
-		<button class="register">注册</button>
-		<button class="login">登录</button>
+		<view class="btn">
+			<ssc-button-primary text="注册"/>
+		</view>
+		<view class="btn">
+			<ssc-button-default text="登录"/>
+		</view>
 	</view>
 </template>
 
@@ -27,7 +43,7 @@
 		flex-direction: column;
 		.bg{
 			width: 750rpx;
-			height: 450rpx;
+			height: 550rpx;
 			background-image: linear-gradient(to top right, #fcfef7 0%, #f7fdee 50%, #f0fde5 100% );
 			display: flex;
 			justify-content: space-between;
@@ -37,44 +53,75 @@
 				color: $ssc-color-title;
 				font-weight: bold;
 				position: relative;
-				top: 250rpx;
+				top: 300rpx;
 			}
 			image{
-				width: 400rpx;
-				height: 300rpx;
+				width: 480rpx;
+				height: 360rpx;
 				position: relative;
-				top: 100rpx;
+				top: 150rpx;
 			}
 		}
-		.forms{
+		.form{
 			position: relative;
-			bottom: 100rpx;
+			bottom: 50rpx;
 			width: 680rpx;
 			height: 450rpx;
 			background-color: #fff;
 			border-radius: 30rpx; //卡片形
-			box-shadow: 0 10rpx 10rpx 0 $ssc-color-border-grey;
+			box-shadow: 0 0 10rpx 0 $ssc-color-border-grey;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			flex-direction: column;
+			.content{
+				width: 620rpx;
+				height: 100rpx;
+				margin-bottom: 50rpx;
+				padding: 0 10rpx;
+				display: flex;
+				align-items: center;
+				.account{
+					width: 520rpx;
+					border-bottom: 1rpx solid $ssc-color-primary;
+					input{
+						height: 100rpx;
+						padding: 0 20rpx;
+					}
+				}
+				.code{
+					width: 520rpx;
+					border-bottom: 1rpx solid $ssc-color-primary;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					input{
+						height: 100rpx;
+						padding: 0 20rpx;
+					}
+					.vBorder{
+						width: 2rpx;
+						height: 50rpx;
+						background-color:  $ssc-color-primary;
+					}
+					.getCode{
+						width: 250rpx;
+						text-align: end;
+						color: $ssc-color-primary;
+					}
+				}
+				image{
+					width: 50rpx;
+					height: 50rpx;
+					padding-right: 20rpx;
+				}
+			}
 		}
-		.register{
-			margin: 50rpx;
+		.btn{
 			width: 600rpx;
-			background-color: $ssc-color-primary;
-			border-radius: 50rpx;
-			font-size: $ssc-font-size-subtitle;
+			margin-bottom: 50rpx;
 		}
-		.login{
-			width: 600rpx;
-			background-color: #fff;
-			box-sizing: border-box;
-			border: 2rpx solid $ssc-color-primary;
-			border-radius: 50rpx;
-			color: #000;
-			font-size: $ssc-font-size-subtitle;
-		}
+
 	}
 	
 </style>

@@ -1,6 +1,6 @@
 <template>
 	<view class="userLayout">
-		<ssc-profile nickname='未登录用户' uid="100000"/>
+		<ssc-profile nickname='未登录用户' uid="UID:100000"/>
 		
 		<view class="selection">
 			<ssc-option url='/static/image/setting/profile.png' text='个人资料'/>

@@ -1,6 +1,48 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path" : "pages/list-contact/list-contact",
+			"style" : 
+			{
+				"navigationBarTitleText" : "我的联系人"
+			}
+		},
+		{
+			"path" : "pages/list-device/list-device",
+			"style" : 
+			{
+				"navigationBarTitleText" : "我的设备"
+			}
+		},
+		{
+			"path" : "pages/pwd-update/pwd-update",
+			"style" : 
+			{
+				"navigationStyle" : "custom"
+			}
+		},
+		{
+			"path" : "pages/profile/profile",
+			"style" : 
+			{
+				"navigationBarTitleText" : "个人资料"
+			}
+		},
+		{
+			"path" : "pages/pwd-reset/pwd-reset",
+			"style" : 
+			{
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path" : "pages/login/login",
+			"style" : 
+			{
+				"navigationStyle": "custom"
+			}
+		},
+		{
 			"path" : "pages/register/register",
 			"style" : 
 			{
@@ -40,13 +82,6 @@
 			"style" : 
 			{
 				"navigationBarTitleText" : "测试"
-			}
-		},
-		{
-			"path" : "pages/login/login",
-			"style" : 
-			{
-				"navigationStyle": "custom"
 			}
 		}
 	],

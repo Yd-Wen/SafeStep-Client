@@ -28,7 +28,7 @@
 <style lang="scss" scoped>
 	.profile{
 		display: flex; 
-		align-items: center; //水平居住
+		align-items: center; //水平居中
 		justify-content: center; //垂直居中
 		flex-direction: column; //换行显示
 		padding: 50rpx 0;

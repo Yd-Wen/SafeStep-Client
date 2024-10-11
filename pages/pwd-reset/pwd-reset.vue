@@ -1,25 +1,36 @@
 <template>
 	<view class="layout">
 		<view class="bg">
-			<view class="text">登录</view>
+			<view class="text">重置密码</view>
 			<image src="/static/image/welcome.png" mode="aspectFill"></image>
 		</view>
 		<view class="form">
 			<view class="content">
 				<image src="/static/image/account.png" mode="aspectFill"/>
-				<input type="number" maxlength="11" placeholder="请输入手机号"/>
+				<view class="account">
+					<input type="number" maxlength="11" placeholder="请输入手机号"/>
+				</view>
+			</view>
+			<view class="content">
+				<image src="/static/image/code.png" mode="aspectFill"/>
+				<view class="code">
+					<input type="number" placeholder="请输入验证码"/>
+					<view class="vBorder"/>
+					<view class="getCode">获取验证码</view>
+				</view>
 			</view>
 			<view class="content">
 				<image src="/static/image/passwd.png" mode="aspectFill"/>
-				<input password type="safe-password" placeholder="请输入密码"/>
+				<view class="newPwd">
+					<input password type="safe-password" placeholder="请输入新密码"/>
+				</view>
 			</view>
-			<view class="forgetPwd">忘记密码</view>
 		</view>
 		<view class="btn">
-			<ssc-button-primary text="登录"/>
+			<ssc-button-primary text="提交"/>
 		</view>
 		<view class="btn">
-			<ssc-button-default text="注册"/>
+			<ssc-button-default text="取消"/>
 		</view>
 	</view>
 </template>
@@ -44,6 +55,7 @@
 			justify-content: space-between;
 			padding: 0 50rpx;
 			.text{
+				width: 300rpx;
 				font-size: $ssc-font-size-title;
 				color: $ssc-color-title;
 				font-weight: bold;
@@ -61,7 +73,7 @@
 			position: relative;
 			bottom: 50rpx;
 			width: 680rpx;
-			height: 450rpx;
+			height: 600rpx;
 			background-color: #fff;
 			border-radius: 30rpx; //卡片形
 			box-shadow: 0 0 10rpx 0 $ssc-color-border-grey;
@@ -76,24 +88,48 @@
 				padding: 0 10rpx;
 				display: flex;
 				align-items: center;
-				input{
+				.account{
 					width: 520rpx;
-					height: 100rpx;
-					padding: 0 20rpx;
 					border-bottom: 1rpx solid $ssc-color-primary;
+					input{
+						height: 100rpx;
+						padding: 0 20rpx;
+					}
+				}
+				.code{
+					width: 520rpx;
+					border-bottom: 1rpx solid $ssc-color-primary;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					input{
+						height: 100rpx;
+						padding: 0 20rpx;
+					}
+					.vBorder{
+						width: 2rpx;
+						height: 50rpx;
+						background-color:  $ssc-color-primary;
+					}
+					.getCode{
+						width: 250rpx;
+						text-align: end;
+						color: $ssc-color-primary;
+					}
+				}
+				.newPwd{
+					width: 520rpx;
+					border-bottom: 1rpx solid $ssc-color-primary;
+					input{
+						height: 100rpx;
+						padding: 0 20rpx;
+					}
 				}
 				image{
 					width: 50rpx;
 					height: 50rpx;
 					padding-right: 20rpx;
 				}
-			}
-			.forgetPwd{
-				width: 620rpx;
-				padding: 0 20rpx;
-				text-align: start;
-				font-size: $ssc-font-size-hint;
-				color: $ssc-color-primary;
 			}
 		}
 		.btn{
@@ -104,3 +140,4 @@
 	}
 	
 </style>
+

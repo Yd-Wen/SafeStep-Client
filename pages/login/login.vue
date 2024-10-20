@@ -72,7 +72,7 @@
 			.content{
 				width: 620rpx;
 				height: 100rpx;
-				margin-bottom: 50rpx;
+				margin: 25rpx;
 				padding: 0 10rpx;
 				display: flex;
 				align-items: center;

@@ -12,7 +12,7 @@ export function http(options, loading = true) {
 	return new Promise((resolve, reject) => {
 		uni.request({
 			header: {
-				token:uni.getStorageSync("token")||''
+				token:uni.getStorageSync("userToken")||''
 			},
 			url: baseUrl + options.url,
 			method: options.method || 'GET',
@@ -36,14 +36,14 @@ export function http(options, loading = true) {
 				}else{
 					uni.showToast({
 						title: res.data.msg,
-						icon: res.data.code > 1?"none":"success"
+						icon: res.data.code == 1?"success":"error"
 					})
 				}
 			},
 			fail(err) {
 				uni.hideLoading();
 				console.log('请求失败：', err);
-				uni.shoeToast({
+				uni.showToast({
 					icon: "error",
 					title: err.data.msg
 				})

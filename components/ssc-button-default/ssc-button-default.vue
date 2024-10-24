@@ -1,16 +1,17 @@
 <template>
 	<view class="button">
-		<button type="default">{{text}}</button>
+		<button @click="$emit('click')" type="default">{{text}}</button>
 	</view>
 </template>
 
 <script setup>
-	defineProps({
-		text:{
-			type:String,
-			default:'按钮'
-		}
-	})
+defineProps({
+	text:{
+		type:String,
+		default:'按钮'
+	}
+})
+defineEmits(['click'])
 </script>
 
 <style lang="scss" scoped>

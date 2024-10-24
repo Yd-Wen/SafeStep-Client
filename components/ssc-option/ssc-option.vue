@@ -1,5 +1,5 @@
 <template>
-	<view class="raw">
+	<view @click="$emit('on-navigate')" class="raw">
 		<view class="left">
 			<ssc-icon :url="url"></ssc-icon>
 			<view class="text">{{text}}</view>
@@ -11,17 +11,18 @@
 </template>
 
 <script setup>
-	defineProps({
-		url:{
-			type:String,
-			default:'/static/image/logo.png'
-		},
-		text:{
-			type:String,
-			default:'默认设置'
-		}
-		
-	})
+defineProps({
+	url:{
+		type:String,
+		default:'/static/image/logo.png'
+	},
+	text:{
+		type:String,
+		default:'默认设置'
+	}
+	
+})
+defineEmits(['on-navigate'])
 </script>
 
 <style lang="scss" scoped>

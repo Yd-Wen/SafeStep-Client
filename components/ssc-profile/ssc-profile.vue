@@ -9,20 +9,20 @@
 </template>
 
 <script setup>
-	defineProps({
-		avatar:{
-			type:String,
-			default:'/static/image/avatar_default.png'
-		},
-		nickname:{
-			type:String,
-			default:'未登录用户',
-		},
-		uid:{
-			type:String,
-			default:'000000'
-		}
-	})
+defineProps({
+	avatar:{
+		type:String,
+		default:'/static/image/avatar_default.png'
+	},
+	nickname:{
+		type:String,
+		default:'未登录用户'
+	},
+	uid:{
+		type:String,
+		default:'000000'
+	}
+})
 </script>
 
 <style lang="scss" scoped>

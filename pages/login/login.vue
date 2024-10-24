@@ -7,24 +7,87 @@
 		<view class="form">
 			<view class="content">
 				<image src="/static/image/account.png" mode="aspectFill"/>
-				<input type="number" maxlength="11" placeholder="请输入手机号"/>
+				<input :value="account" @input="onIptAccount" type="number" maxlength="11" placeholder="请输入手机号"/>
 			</view>
 			<view class="content">
 				<image src="/static/image/passwd.png" mode="aspectFill"/>
-				<input password type="safe-password" placeholder="请输入密码"/>
+				<input :value="pwd" @input="onIptPwd" password type="safe-password" maxlength="12" placeholder="请输入密码"/>
 			</view>
-			<view class="forgetPwd">忘记密码</view>
+			<view @click="onForgetPwd" class="forgetPwd">忘记密码</view>
 		</view>
 		<view class="btn">
-			<ssc-button-primary text="登录"/>
+			<ssc-button-primary @click="onLogin" text="登录"/>
 		</view>
 		<view class="btn">
-			<ssc-button-default text="注册"/>
+			<ssc-button-default @click="onRegister" text="注册"/>
 		</view>
 	</view>
 </template>
 
 <script setup>
+import { onMounted, ref } from 'vue';
+import {loginUserAPI} from './api.js'
+import { validAccount, validPwd } from '../../utils/stringUtil';
+
+const account = ref("")
+const pwd = ref("")
+
+function onIptAccount(e) {
+	account.value = e.detail.value
+}
+
+function onIptPwd(e) {
+	pwd.value = e.detail.value
+}
+
+function onForgetPwd() {
+	uni.navigateTo({
+		url: '/pages/pwd-reset/pwd-reset'
+	})
+}
+
+async function onLogin() {
+	// 校验账号和密码
+	if(!validAccount(account.value)||!validPwd(pwd.value)) return;
+	// 调用登录接口
+	let loginRes = await loginUserAPI({
+		account: account.value,
+		password: pwd.value
+	})
+	// 登录成功
+	if(loginRes.code == 1){
+		// 保存用户信息到本地
+		uni.setStorageSync('userInfo', {
+			account: account.value,
+			password: pwd.value
+		})
+		uni.setStorageSync('userToken', loginRes.data)
+		// 延迟 1 秒后跳转首页
+		setTimeout(() => {
+			uni.reLaunch({
+				url: '/pages/home/home'
+			});
+		}, 1000);
+	}
+}
+
+function onRegister() {
+	uni.redirectTo({
+		url:'/pages/register/register'
+	})
+}
+
+function loadData() {
+	const userInfo = uni.getStorageSync('userInfo');
+	if (userInfo) {
+		account.value = userInfo.account;
+		pwd.value = userInfo.password; // 请确保这样做是安全的
+	}
+}
+
+onMounted(()=>{
+	loadData()
+})
 	
 </script>
 

@@ -1,11 +1,11 @@
 <template>
 	<view class="userLayout">
-		<ssc-profile nickname='未登录用户' uid="UID:100000"/>
+		<ssc-profile :nickname='user.userName' :uid="user.userCode"/>
 		
 		<view class="selection">
-			<ssc-option url='/static/image/setting/profile.png' text='个人资料'/>
+			<ssc-option @on-navigate="onProfile" url='/static/image/setting/profile.png' text='个人资料'/>
 			<view class="border"/>
-			<ssc-option url='/static/image/setting/pwd.png' text='修改密码'/>
+			<ssc-option @on-navigate="onPwd" url='/static/image/setting/pwd.png' text='修改密码'/>
 		</view>	
 		
 		<view class="selection">
@@ -30,7 +30,56 @@
 </template>
 
 <script setup>
+import { onMounted, ref } from 'vue';
+import { getUserInfoAPI } from './api.js';	
+import { onShow } from '@dcloudio/uni-app'
+
+let user = ref({});	
+
+async function getUserInfo(){
+	try {
+		// 从本地缓存中获取用户信息
+		user.value = uni.getStorageSync('userInfo');
+		
+		if (!user.value.userCode) {
+			// 从服务器获取用户信息
+			let result = await getUserInfoAPI({
+				account: user.value.account
+			});
+			if (result.code == 1) {
+				user.value = result.data;
+				// 保存到本地缓存
+				uni.setStorageSync('userInfo', {
+					avatar: user.value.avatar,
+					userCode: user.value.userCode,
+					account: user.value.account,
+					password: user.value.password,
+					userName: user.value.userName,
+					userDescription: user.value.userDescription
+				});
+			}
+		}
+	} catch (error) {
+		console.error('获取用户信息失败:', error);
+	}
+}
+
+onShow(() => {
+	getUserInfo()
+})
 	
+function onProfile(){
+	uni.navigateTo({
+		url: '/pages/profile/profile',
+	})
+}
+	
+function onPwd(){
+	uni.navigateTo({
+		url: '/pages/pwd-update/pwd-update'
+	})
+}
+
 </script>
 
 <style lang="scss">

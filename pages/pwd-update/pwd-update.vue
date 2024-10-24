@@ -8,32 +8,96 @@
 			<view class="content">
 				<image src="/static/image/passwd.png" mode="aspectFill"/>
 				<view class="pwd">
-					<input password type="safe-password" placeholder="请输入原密码"/>
+					<input :value="oldPwd" @input="onIptOldPwd" password type="safe-password" maxlength="12" placeholder="请输入原密码"/>
 				</view>
 			</view>
 			<view class="content">
 				<image src="/static/image/passwd_new.png" mode="aspectFill"/>
 				<view class="pwd">
-					<input password type="safe-password" placeholder="请输入新密码"/>
+					<input :value="newPwd" @input="onIptNewPwd" password type="safe-password" maxlength="12" placeholder="请输入新密码"/>
 				</view>
 			</view>
 			<view class="content">
 				<image src="/static/image/passwd_new.png" mode="aspectFill"/>
 				<view class="pwd">
-					<input password type="safe-password" placeholder="请确认新密码"/>
+					<input :value="newConfirmPwd" @input="onIptNewConfirmPwd" password type="safe-password" maxlength="12" placeholder="请确认新密码"/>
 				</view>
 			</view>
 		</view>
 		<view class="btn">
-			<ssc-button-primary text="提交"/>
+			<ssc-button-primary @click="onSubmit" text="提交"/>
 		</view>
 		<view class="btn">
-			<ssc-button-default text="取消"/>
+			<ssc-button-default  @click="onCancel" text="取消"/>
 		</view>
 	</view>
 </template>
 
 <script setup>
+import { ref } from 'vue';
+import {verifyPwdAPI, resetPwdAPI} from './api.js';
+import {validAccount, validPwd} from '@/utils/stringUtil.js'
+
+const oldPwd = ref("")  //原密码
+const newPwd = ref("") //新密码
+const newConfirmPwd = ref("") //确认新密码
+
+
+//输入原密码
+function onIptOldPwd(e){oldPwd.value = e.detail.value;}
+
+//输入新密码
+function onIptNewPwd(e){newPwd.value = e.detail.value;}
+
+//输入确认新密码
+function onIptNewConfirmPwd(e){newConfirmPwd.value = e.detail.value;}
+
+//提交
+async function onSubmit(){
+	//检验密码
+	if(!validPwd(oldPwd.value)||!validPwd(newPwd.value)||!validPwd(newConfirmPwd.value)) return
+	//两次新密码一致
+	if(newPwd.value!== newConfirmPwd.value){
+		uni.showToast({title: '两次密码不一致', icon: 'none'})
+		return
+	}
+	//获取账号信息
+	let userInfo = uni.getStorageSync('userInfo')
+	if (userInfo) {
+	      // 验证原密码
+		  let result = await verifyPwdAPI({
+	      	account: userInfo.account,
+			password: oldPwd.value
+	      })
+		  // 验证成功
+		  if(result.code == 1){
+			  console.log("修改密码");
+			  let result = await resetPwdAPI({
+				  account:userInfo.account,
+				  password:newPwd.value
+			  })
+			  if(result.code == 1){
+			  	// 保存用户信息到本地
+			  	uni.setStorageSync('userInfo', {
+			  		account: userInfo.account,
+			  		password: newPwd.value
+			  	})
+			  	// 延迟 1 秒后返回上一页
+			  	setTimeout(() => {
+			  		uni.navigateBack()
+			  	}, 1000)
+			  }
+		  }
+	      
+	} else {
+		console.log('No userInfo found in storage.');
+	}
+}
+
+//取消
+function onCancel(){
+	uni.navigateBack()
+}
 	
 </script>
 

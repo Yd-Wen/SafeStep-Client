@@ -5,9 +5,32 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
+import { onShow } from '@dcloudio/uni-app'
+
+let userInfo = ref({})
+
+function getData() {
+	userInfo = uni.getStorageSync('userInfo')
+	console.log(userInfo);
+	if(userInfo.userCode == null) {
+		uni.showToast({
+			title: '请先登录',
+			icon: 'none'
+		})
+		// 1s后跳转到登录页面
+		setTimeout(() => {
+			uni.navigateTo({url: '/pages/login/login'})
+		}, 1000)
+	}
+}
+
+onShow(()=>{
+	getData()
+})
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 </style>

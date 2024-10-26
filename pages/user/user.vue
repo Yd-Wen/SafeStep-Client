@@ -1,6 +1,6 @@
 <template>
 	<view class="userLayout">
-		<ssc-profile :nickname='user.userName' :uid="user.userCode"/>
+		<ssc-profile :avatar='user.avatar' :nickname='user.userName' :uid="user.userCode"/>
 		
 		<view class="selection">
 			<ssc-option @on-navigate="onProfile" url='/static/image/setting/profile.png' text='个人资料'/>

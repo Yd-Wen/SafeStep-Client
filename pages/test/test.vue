@@ -1,5 +1,7 @@
 <template>
 	<view>
+		<button @click="onChoose">选择图片</button>
+		
 		<navigator url="/pages/index/index">
 			<image class="image" src="/static/test/1.jpg" mode="aspectFill"></image>
 		</navigator>
@@ -30,12 +32,36 @@
 	</view>
 </template>
 
-<script>
-	export default {
-	}
+<script setup>
+
+function onChoose(){
+	// 从相册选择6张图
+	uni.chooseImage({
+		count: 6,
+		sizeType: ['original', 'compressed'],
+		sourceType: ['album'],
+		success: function(res) {
+			// 预览图片
+			uni.previewImage({
+				urls: res.tempFilePaths,
+				longPressActions: {
+					itemList: ['发送给朋友', '保存图片', '收藏'],
+					success: function(data) {
+						console.log('选中了第' + (data.tapIndex + 1) + '个按钮,第' + (data.index + 1) + '张图片');
+					},
+					fail: function(err) {
+						console.log(err.errMsg);
+					}
+				}
+			});
+		}
+		});
+
+}
+
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	.image{
 		width: 500rpx;
 

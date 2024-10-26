@@ -1,7 +1,7 @@
 <template>
 	<view class="profile">
 		<view class="avatar">
-			<image :src="user.avatar" mode="aspectFill"></image>
+			<image ref="image" :src="user.avatar" @click="onChooseImg" mode="aspectFill"></image>
 		</view>
 		<view class="avatarHint">点击修改头像</view>
 		<view class="detail">
@@ -33,39 +33,82 @@
 
 <script setup>
 import { onMounted, ref } from 'vue';
-import { getUserInfoAPI, updateUserInfoAPI } from './api.js';	
+import { onShow } from '@dcloudio/uni-app'
+import { uploadAvatarAPI, getUserInfoAPI, updateUserInfoAPI } from './api.js';	
+import { image2Url, imageUrl2Base64, base642Blob, getBase64, getBlob } from '@/utils/imageUtil.js';
 
-//用户信息(第一次只有账号和密码)
+// 是否更新
+let isUpdate = ref(false)
+
+// 本地图片
+let localAvatar = ref('')
+// 用户信息(第一次只有账号和密码)
 let user = ref({})
+// 头像组件
+const image = ref({})
 
-//输入昵称
+// 输入昵称
 function onIptNickname(e){
 	user.value.userName = e.detail.value;
+	isUpdate.value = true;
 }
 
-//输入描述
+// 输入描述
 function onIptDescription(e){
 	user.value.userDescription = e.detail.value;
+	isUpdate.value = true;
 }
 
-//提交
+// 选择图片
+function onChooseImg(){
+	// 从相册选择6张图
+	uni.chooseImage({
+		count: 1, //默认9
+		sizeType: ['original'], //指定是原图还是压缩图
+		sourceType: ['album'], //指定来源是相册还是相机
+		success:(res)=>{
+			if(res) {
+				isUpdate.value = true
+				localAvatar.value = res.tempFilePaths[0]
+				user.value.avatar = res.tempFilePaths[0]
+			}
+		}
+	});
+}
+
+// 提交
 async function onSubmit(){
-	let result = await updateUserInfoAPI(user.value)
-	if (result.code == 1) {
-		// 更新本地缓存
-		uni.setStorageSync('userInfo', {
-			avatar: user.value.avatar,
-			userCode: user.value.userCode,
-			account: user.value.account,
-			password: user.value.password,
-			userName: user.value.userName,
-			userDescription: user.value.userDescription,
+	if(!isUpdate.value) return
+	
+	if(localAvatar.value != ''){
+		// 上传头像
+		let uploadResult = await uploadAvatarAPI(localAvatar.value,{
+			account: user.value.account
 		})
-		// 延迟 1 秒后返回上一页
-		setTimeout(() => {
-			uni.navigateBack()
-		}, 1000)
-	}
+		if(uploadResult.code != 1) return 
+		// 更新用户信息中的头像
+		user.value.avatar = uploadResult.data
+		//user.value.avatar = image2Url('/'+ uni.getStorageSync('userInfo').account + '/avatar.jpg')		
+	} 
+	
+	// 提交用户信息
+	const userInfoResult = await updateUserInfoAPI(user.value);
+	if (userInfoResult.code != 1) return; // 如果提交失败，退出函数
+	
+	// 更新本地缓存
+	uni.setStorageSync('userInfo', {
+		avatar: user.value.avatar,
+		userCode: user.value.userCode,
+		account: user.value.account,
+		password: user.value.password,
+		userName: user.value.userName,
+		userDescription: user.value.userDescription,
+	});
+
+	// 延迟 1 秒后返回上一页
+	setTimeout(() => {
+		uni.navigateBack();
+	}, 1000);
 }
 
 //取消
@@ -100,9 +143,10 @@ async function getUserInfo(){
 	} catch (error) {
 		console.error('获取用户信息失败:', error);
 	}
+
 }
-	
-onMounted(()=>{
+
+onShow(()=>{
 	getUserInfo()
 })
 

@@ -1,15 +1,8 @@
 {
-  "hash": "370a1db1",
+  "hash": "ca9549c4",
   "configHash": "ce8d852d",
-  "lockfileHash": "98199366",
-  "browserHash": "0cef3376",
-  "optimized": {
-    "moment-timezone": {
-      "src": "../../../../../node_modules/moment-timezone/index.js",
-      "file": "moment-timezone.js",
-      "fileHash": "12cf53e9",
-      "needsInterop": true
-    }
-  },
+  "lockfileHash": "e240d969",
+  "browserHash": "fbc83e2e",
+  "optimized": {},
   "chunks": {}
 }

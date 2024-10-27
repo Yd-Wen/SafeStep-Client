@@ -200,7 +200,7 @@ onShow(()=>{
 					align-items: center;
 					color: $ssc-color-paragraph;
 					font-size: $ssc-font-size-paragraph;				
-					background-color: $ssc-color-border-grey;
+					background-color: $ssc-color-disabled;
 				}
 				.contentInput{
 					width: 500rpx;

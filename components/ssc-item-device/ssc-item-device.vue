@@ -1,56 +1,71 @@
 <template>
-	<view class="item">
-		<navigator url="">
-			<view class="name">设备名称</view>
+	<navigator :url="`/pages/detail-device/detail-device?device=${JSON.stringify(device)}`">
+		<view class="item">
+			<view class="name">{{device.deviceName}}</view>
 			<view class="status">
-				<view class="dot"/>
-				<view class="text">可用</view>
+				<view :class="device.deviceStatus==1?'greendot':'reddot'"/>
+				<view class="text">{{device.deviceStatus==1?'可用':'停用'}}</view>
 			</view>
 			<image src="/static/image/device.png" mode="aspectFill"></image>		
-		</navigator>
-	</view>
+		</view>
+	</navigator>
+	
 </template>
 
 <script setup>
+// 定义接收父组件传入的 device 数据
+defineProps({
+    device: {
+        type: Object,
+        required: true
+    }
+});
 </script>
 
 <style lang="scss" scoped>
 	.item{
-		width: 350rpx;
-		height: 300rpx;
-		padding: 20rpx;
+		width: 345rpx;
+		height: 200rpx;
+		padding-inline: 20rpx;
 		border: 2rpx solid $ssc-color-border-grey;
-		border-radius: 20rpx;
+		border-radius: 50rpx;
 		display: flex;
 		justify-content: center;
 		flex-direction: column;
 		.name{
-			height: 80rpx;
-			line-height: 80rpx;
+			height: 60rpx;
+			line-height: 60rpx;
 			color: $ssc-color-subtitle;
 			font-size: $ssc-font-size-subtitle;
 		}
 		.status{
-			height: 70rpx;
+			height: 40rpx;
 			display: flex;
 			align-items: center;
-			.dot{
+			.greendot{
 				width: 10px;
 				height: 10px;
 				border-radius: 50%;
 				margin-right: 10px;
 				background-color: $ssc-color-primary;
 			}
+			.reddot{
+				width: 10px;
+				height: 10px;
+				border-radius: 50%;
+				margin-right: 10px;
+				background-color: red;
+			}
 			.text{
-				height: 70rpx;
-				line-height: 70rpx;
-				color: $ssc-color-paragraph;
-				font-size: $ssc-font-size-paragraph;
+				height: 40rpx;
+				line-height: 40rpx;
+				color: $ssc-color-hint;
+				font-size: $ssc-font-size-hint;
 			}
 		}
 		image{
-			width: 150rpx;
-			height: 150rpx;
+			width: 100rpx;
+			height: 100rpx;
 		}
 	}
 </style>

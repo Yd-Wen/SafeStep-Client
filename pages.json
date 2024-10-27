@@ -83,6 +83,13 @@
 			{
 				"navigationBarTitleText" : "测试"
 			}
+		},
+		{
+			"path" : "pages/detail-device/detail-device",
+			"style" : 
+			{
+				"navigationBarTitleText" : "设备详情"
+			}
 		}
 	],
 	"globalStyle": {

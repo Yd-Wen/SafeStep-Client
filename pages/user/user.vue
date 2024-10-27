@@ -9,9 +9,9 @@
 		</view>	
 		
 		<view class="selection">
-			<ssc-option url='/static/image/setting/device.png' text='设备管理'/>
+			<ssc-option @on-navigate="onListDevice" url='/static/image/setting/device.png' text='设备管理'/>
 			<view class="border"/>
-			<ssc-option url='/static/image/setting/contact.png' text='联系人管理'/>
+			<ssc-option @on-navigate="onListContact" url='/static/image/setting/contact.png' text='联系人管理'/>
 			<view class="border"/>
 			<ssc-option url='/static/image/setting/activity.png' text='活动历史' class="last"/>
 			<view class="border"/>
@@ -77,6 +77,18 @@ function onProfile(){
 function onPwd(){
 	uni.navigateTo({
 		url: '/pages/pwd-update/pwd-update'
+	})
+}
+
+function onListDevice(){
+	uni.navigateTo({
+		url: '/pages/list-device/list-device'
+	})
+}
+
+function onListContact(){
+	uni.navigateTo({
+		url: '/pages/list-contact/list-contact'
 	})
 }
 

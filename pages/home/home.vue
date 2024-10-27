@@ -13,14 +13,14 @@ let userInfo = ref({})
 function getData() {
 	userInfo = uni.getStorageSync('userInfo')
 	console.log(userInfo);
-	if(userInfo.userCode == null) {
+	if(userInfo.account == null) {
 		uni.showToast({
 			title: '请先登录',
 			icon: 'none'
 		})
 		// 1s后跳转到登录页面
 		setTimeout(() => {
-			uni.navigateTo({url: '/pages/login/login'})
+			uni.reLaunch({url: '/pages/login/login'})
 		}, 1000)
 	}
 }

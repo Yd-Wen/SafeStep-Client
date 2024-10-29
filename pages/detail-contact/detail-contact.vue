@@ -1,12 +1,12 @@
 <template>
 	<view class="bg">
 		<view class="header">
-			<view class="text">{{device.deviceName}}</view>
+			<view class="text">{{contact.userName}}</view>
 			<view class="options">
-				<view class="option" @click="onUpdateDevice">
+				<view class="option" @click="onUpdateContact">
 					<ssc-icon url="/static/image/option_update.png"></ssc-icon>
 				</view>
-				<view class="option" @click="onDeleteDevice">
+				<view class="option" @click="onDeleteContact">
 					<ssc-icon url="/static/image/option_delete.png"></ssc-icon>
 				</view>
 			</view>
@@ -15,31 +15,21 @@
 			<view class="hint">信息</view>
 			<view class="card">
 				<view class="option">
-					<view class="title">设备编号</view>
-					<view class="content">{{device.deviceCode}}</view>
+					<view class="title">编号</view>
+					<view class="content">{{contact.userCode}}</view>
 				</view>	
 				<view class="option">
-					<view class="title">设备名称</view>
-					<input :disabled="!isEdit" :value="device.deviceName" @input="onIptName" class="contentInput" maxlength="20"/>
+					<view class="title">名称</view>
+					<input :disabled="!isEdit" :value="contact.userName" @input="onIptName" class="contentInput" maxlength="20"/>
+				</view>	
+				<view class="option">
+					<view class="title">电话</view>
+					<input :disabled="!isEdit" :value="contact.contactPhone" @input="onIptPhone" class="contentInput" maxlength="11"/>
 				</view>	
 				<view class="description">
-					<view class="title">设备描述</view>
-					<textarea :disabled="!isEdit" :value="device.deviceDescription" @input="onIptDescription" class="content" placeholder="平安步，步步平安！"/>
+					<view class="title">描述</view>
+					<textarea :disabled="!isEdit" :value="contact.userDescription" @input="onIptDescription" class="content" placeholder="平安步，步步平安！"/>
 				</view>	
-			</view>
-			<view class="hint">位置</view>
-			<view class="card">
-				<view class="option">
-					<view class="title">设备位置</view>
-					<input :disabled="!isEdit" :value="device.deviceLocation" @input="onIptLocation" class="contentInput" maxlength="20"/>
-				</view>	
-			</view>
-			<view class="hint">状态</view>
-			<view class="card">
-				<view class="status">
-					<view class="title">设备状态</view>
-					<switch :disabled="!isEdit" :checked="device.deviceStatus==1?true:false" @change="onChangeStatus" />
-				</view>
 			</view>
 			<view v-if="isEdit" class="update">
 				<view class="btn">
@@ -56,23 +46,22 @@
 <script setup>
 import { ref } from "vue";
 import { onLoad } from "@dcloudio/uni-app";
-import { updateDeviceAPI, deleteDeviceAPI } from "./api.js";
+import { updateContactAPI, deleteContactAPI } from "./api.js";
 
-const device = ref({});
+const contact = ref({});
 const isEdit = ref(false);
 const isUpdate = ref(false);
 
-const deviceName = ref("");
-const deviceDescription = ref("");
-const deviceLocation = ref("");
-const deviceStatus = ref(false);
+const userName = ref("");
+const userDescription = ref("");
+const contactPhone = ref("");
 
 onLoad(async (option) => {
 	// 解析对象
-	device.value = JSON.parse(option.device);
+	contact.value = JSON.parse(option.contact);
 })
 
-function onUpdateDevice() {
+function onUpdateContact() {
 	isEdit.value = true;
 }
 
@@ -80,7 +69,7 @@ function deleteOption() {
 	return new Promise((resolve, reject)=>{
 		uni.showModal({
 			title: '提示',
-			content: '确定删除该设备？',
+			content: '确定删除该联系人？',
 			success: (res) => {
 				resolve(res.confirm)
 			}
@@ -88,9 +77,9 @@ function deleteOption() {
 	})
 }
 
-async function onDeleteDevice(){
+async function onDeleteContact(){
 	let deleteRes = await deleteOption()
-	if(deleteRes) deleteRes = await deleteDeviceAPI({deviceCode:device.value.deviceCode})
+	if(deleteRes) deleteRes = await deleteContactAPI({userCode:contact.value.userCode})
 	if(deleteRes.code == 1) {
 		// 延迟 1 秒后返回上一页
 		setTimeout(() => {
@@ -100,33 +89,27 @@ async function onDeleteDevice(){
 }
 
 function onIptName(e) {
-	deviceName.value = e.detail.value;
+	userName.value = e.detail.value;
+	isUpdate.value = true;
+}
+
+function onIptPhone(e) {
+	contactPhone.value = e.detail.value;
 	isUpdate.value = true;
 }
 
 function onIptDescription(e) {
-	deviceDescription.value = e.detail.value;
-	isUpdate.value = true;
-}
-
-function onIptLocation(e) {
-	deviceLocation.value = e.detail.value;
-	isUpdate.value = true;
-}
-
-function onChangeStatus(e) {
-	deviceStatus.value = e.detail.value;
+	userDescription.value = e.detail.value;
 	isUpdate.value = true;
 }
 
 async function onSubmit() {
 	if(!isUpdate.value) return;
-	device.value.deviceName = deviceName.value;
-	device.value.deviceDescription = deviceDescription.value;
-	device.value.deviceLocation = deviceLocation.value;
-	device.value.deviceStatus = deviceStatus.value?1:0;
-	// 提交设备信息
-	let result = await updateDeviceAPI(device.value);
+	contact.value.userName = userName.value;
+	contact.value.contactPhone = contactPhone.value;
+	contact.value.userDescription = userDescription.value;
+	// 提交联系人信息
+	let result = await updateContactAPI(contact.value);
 	if (result.code != 1) return; // 如果提交失败，退出函数
 	// 延迟 1 秒后返回上一页
 	setTimeout(() => {
@@ -136,8 +119,7 @@ async function onSubmit() {
 
 function onCancel() {
 	isEdit.value = false;
-}
-
+}	
 </script>
 
 <style lang="scss" scoped>
@@ -233,21 +215,6 @@ function onCancel() {
 						color: $ssc-color-paragraph;
 						font-size: $ssc-font-size-paragraph;
 						background-color: $ssc-color-text-bg;
-					}
-				}
-				.status{
-					margin-block:20rpx;
-					display: flex;
-					align-items: center; //垂直居中
-					justify-content: space-between;
-					.title{
-						width: 150rpx;
-						margin-inline-end: 20rpx;
-						color: $ssc-color-paragraph;
-						font-size: $ssc-font-size-paragraph;
-					}
-					switch{
-						
 					}
 				}
 			}

@@ -87,8 +87,7 @@ async function onSubmit(){
 		})
 		if(uploadResult.code != 1) return 
 		// 更新用户信息中的头像
-		user.value.avatar = uploadResult.data
-		//user.value.avatar = image2Url('/'+ uni.getStorageSync('userInfo').account + '/avatar.jpg')		
+		user.value.avatar = uploadResult.data	
 	} 
 	
 	// 提交用户信息

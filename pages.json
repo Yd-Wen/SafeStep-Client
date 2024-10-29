@@ -90,6 +90,27 @@
 			{
 				"navigationBarTitleText" : "设备详情"
 			}
+		},
+		{
+			"path" : "pages/register-device/register-device",
+			"style" : 
+			{
+				"navigationBarTitleText" : "添加设备"
+			}
+		},
+		{
+			"path" : "pages/detail-contact/detail-contact",
+			"style" : 
+			{
+				"navigationBarTitleText" : "联系人详情"
+			}
+		},
+		{
+			"path" : "pages/register-contact/register-contact",
+			"style" : 
+			{
+				"navigationBarTitleText" : "添加联系人"
+			}
 		}
 	],
 	"globalStyle": {

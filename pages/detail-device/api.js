@@ -8,3 +8,11 @@ export function updateDeviceAPI(data) {
 		data: data
 	})	
 }
+
+// 删除设备
+export function deleteDeviceAPI(data) {
+	return http({
+		url: '/device/unregister',
+		data: data
+	})	
+}

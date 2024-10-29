@@ -1,47 +1,32 @@
 <template>
 	<view class="bg">
-		<view class="header">
-			<view class="text">{{device.deviceName}}</view>
-			<view class="options">
-				<view class="option" @click="onUpdateDevice">
-					<ssc-icon url="/static/image/option_update.png"></ssc-icon>
-				</view>
-				<view class="option" @click="onDeleteDevice">
-					<ssc-icon url="/static/image/option_delete.png"></ssc-icon>
-				</view>
-			</view>
-		</view>
 		<view class="body">
 			<view class="hint">信息</view>
 			<view class="card">
 				<view class="option">
-					<view class="title">设备编号</view>
-					<view class="content">{{device.deviceCode}}</view>
-				</view>	
-				<view class="option">
 					<view class="title">设备名称</view>
-					<input :disabled="!isEdit" :value="device.deviceName" @input="onIptName" class="contentInput" maxlength="20"/>
+					<input :value="deviceName" @input="onIptName" class="contentInput" maxlength="20"/>
 				</view>	
 				<view class="description">
 					<view class="title">设备描述</view>
-					<textarea :disabled="!isEdit" :value="device.deviceDescription" @input="onIptDescription" class="content" placeholder="平安步，步步平安！"/>
+					<textarea :value="deviceDescription" @input="onIptDescription" class="content" placeholder="平安步，步步平安！"/>
 				</view>	
 			</view>
 			<view class="hint">位置</view>
 			<view class="card">
 				<view class="option">
 					<view class="title">设备位置</view>
-					<input :disabled="!isEdit" :value="device.deviceLocation" @input="onIptLocation" class="contentInput" maxlength="20"/>
+					<input :value="deviceLocation" @input="onIptLocation" class="contentInput" maxlength="20"/>
 				</view>	
 			</view>
 			<view class="hint">状态</view>
 			<view class="card">
 				<view class="status">
 					<view class="title">设备状态</view>
-					<switch :disabled="!isEdit" :checked="device.deviceStatus==1?true:false" @change="onChangeStatus" />
+					<switch :checked="deviceStatus" @change="onChangeStatus" />
 				</view>
 			</view>
-			<view v-if="isEdit" class="update">
+			<view class="update">
 				<view class="btn">
 					<ssc-button-primary @click="onSubmit" text="提交"/>
 				</view>
@@ -55,78 +40,45 @@
 
 <script setup>
 import { ref } from "vue";
-import { onLoad } from "@dcloudio/uni-app";
-import { updateDeviceAPI, deleteDeviceAPI } from "./api.js";
-
-const device = ref({});
-const isEdit = ref(false);
-const isUpdate = ref(false);
+import { registerDeviceAPI } from "./api.js";
 
 const deviceName = ref("");
 const deviceDescription = ref("");
 const deviceLocation = ref("");
 const deviceStatus = ref(false);
 
-onLoad(async (option) => {
-	// 解析对象
-	device.value = JSON.parse(option.device);
-})
-
-function onUpdateDevice() {
-	isEdit.value = true;
-}
-
-function deleteOption() {
-	return new Promise((resolve, reject)=>{
-		uni.showModal({
-			title: '提示',
-			content: '确定删除该设备？',
-			success: (res) => {
-				resolve(res.confirm)
-			}
-		})
-	})
-}
-
-async function onDeleteDevice(){
-	let deleteRes = await deleteOption()
-	if(deleteRes) deleteRes = await deleteDeviceAPI({deviceCode:device.value.deviceCode})
-	if(deleteRes.code == 1) {
-		// 延迟 1 秒后返回上一页
-		setTimeout(() => {
-			uni.navigateBack();
-		}, 1000);
-	}
-}
-
 function onIptName(e) {
 	deviceName.value = e.detail.value;
-	isUpdate.value = true;
 }
 
 function onIptDescription(e) {
 	deviceDescription.value = e.detail.value;
-	isUpdate.value = true;
 }
 
 function onIptLocation(e) {
 	deviceLocation.value = e.detail.value;
-	isUpdate.value = true;
 }
 
 function onChangeStatus(e) {
 	deviceStatus.value = e.detail.value;
-	isUpdate.value = true;
 }
 
 async function onSubmit() {
-	if(!isUpdate.value) return;
-	device.value.deviceName = deviceName.value;
-	device.value.deviceDescription = deviceDescription.value;
-	device.value.deviceLocation = deviceLocation.value;
-	device.value.deviceStatus = deviceStatus.value?1:0;
+	// 校验设备信息
+	if(deviceLocation.value=='') {
+		uni.showToast({
+			title:'位置不能为空',
+			icon:'error'
+		})
+		return
+	}
 	// 提交设备信息
-	let result = await updateDeviceAPI(device.value);
+	let result = await registerDeviceAPI({
+		deviceName: deviceName.value,
+		deviceDescription: deviceDescription.value,
+		deviceLocation: deviceLocation.value,
+		deviceStatus: deviceStatus.value?1:0
+	});
 	if (result.code != 1) return; // 如果提交失败，退出函数
 	// 延迟 1 秒后返回上一页
 	setTimeout(() => {
@@ -135,7 +87,7 @@ async function onSubmit() {
 }
 
 function onCancel() {
-	isEdit.value = false;
+	uni.navigateBack()
 }
 
 </script>
@@ -158,9 +110,6 @@ function onCancel() {
 				line-height: 60rpx;
 				color: $ssc-color-title;
 				font-size: $ssc-font-size-title;
-				overflow: hidden; // 溢出隐藏
-				text-overflow: ellipsis; // 文本溢出时显示省略号
-				white-space: nowrap; // 设置块级元素内多行文本为单行
 			}
 			.options{
 				width: 120rpx;
@@ -200,7 +149,6 @@ function onCancel() {
 					.contentInput{
 						width: 500rpx;
 						height: 80rpx;
-						padding-left: 10rpx;
 						border: none;
 						border-bottom: 1rpx solid $ssc-color-primary;
 						color: $ssc-color-paragraph;
@@ -214,6 +162,7 @@ function onCancel() {
 						align-items: center;
 						color: $ssc-color-paragraph;
 						font-size: $ssc-font-size-paragraph;				
+						background-color: $ssc-color-disabled;
 					}
 				}
 				.description{
@@ -228,8 +177,8 @@ function onCancel() {
 						width: 645rpx;
 						height: 150rpx;
 						margin-top: 20rpx;
-						margin-block-end:20rpx;
 						padding: 10rpx;
+						margin-block-end:20rpx;
 						color: $ssc-color-paragraph;
 						font-size: $ssc-font-size-paragraph;
 						background-color: $ssc-color-text-bg;

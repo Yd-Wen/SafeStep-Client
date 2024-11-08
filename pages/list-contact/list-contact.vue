@@ -3,7 +3,7 @@
 		<view class="header">
 			<view class="text">{{userName}}的联系人</view>
 			<view class="add" @click="onAddContact">
-				<ssc-icon url="/static/image/option_add.png"></ssc-icon>
+				<ssc-icon url="/static/image/option/option_add.png"></ssc-icon>
 			</view>
 		</view>
 		<view class="list" v-for="(contact, index) in contacts" :key="contact.userCode" >

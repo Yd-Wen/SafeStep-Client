@@ -4,10 +4,10 @@
 			<view class="text">{{contact.userName}}</view>
 			<view class="options">
 				<view class="option" @click="onUpdateContact">
-					<ssc-icon url="/static/image/option_update.png"></ssc-icon>
+					<ssc-icon url="/static/image/option/option_update.png"></ssc-icon>
 				</view>
 				<view class="option" @click="onDeleteContact">
-					<ssc-icon url="/static/image/option_delete.png"></ssc-icon>
+					<ssc-icon url="/static/image/option/option_delete.png"></ssc-icon>
 				</view>
 			</view>
 		</view>

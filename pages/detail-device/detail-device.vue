@@ -4,10 +4,10 @@
 			<view class="text">{{device.deviceName}}</view>
 			<view class="options">
 				<view class="option" @click="onUpdateDevice">
-					<ssc-icon url="/static/image/option_update.png"></ssc-icon>
+					<ssc-icon url="/static/image/option/option_update.png"></ssc-icon>
 				</view>
 				<view class="option" @click="onDeleteDevice">
-					<ssc-icon url="/static/image/option_delete.png"></ssc-icon>
+					<ssc-icon url="/static/image/option/option_delete.png"></ssc-icon>
 				</view>
 			</view>
 		</view>
@@ -150,7 +150,7 @@ function onCancel() {
 			align-items: center;
 			justify-content: space-between;
 			padding-inline:20rpx;
-			widt: 100%;
+			width: 100%;
 			height: 100rpx;
 			.text{
 				width: 500rpx;

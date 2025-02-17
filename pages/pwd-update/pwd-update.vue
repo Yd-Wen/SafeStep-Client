@@ -2,23 +2,23 @@
 	<view class="layout">
 		<view class="bg">
 			<view class="text">修改密码</view>
-			<image src="/static/image/welcome.png" mode="aspectFill"></image>
+			<image src="/static/image/app/welcome.png" mode="aspectFill"></image>
 		</view>
 		<view class="form">
 			<view class="content">
-				<image src="/static/image/passwd.png" mode="aspectFill"/>
+				<image src="/static/image/app/passwd.png" mode="aspectFill"/>
 				<view class="pwd">
 					<input :value="oldPwd" @input="onIptOldPwd" password type="safe-password" maxlength="12" placeholder="请输入原密码"/>
 				</view>
 			</view>
 			<view class="content">
-				<image src="/static/image/passwd_new.png" mode="aspectFill"/>
+				<image src="/static/image/app/passwd_new.png" mode="aspectFill"/>
 				<view class="pwd">
 					<input :value="newPwd" @input="onIptNewPwd" password type="safe-password" maxlength="12" placeholder="请输入新密码"/>
 				</view>
 			</view>
 			<view class="content">
-				<image src="/static/image/passwd_new.png" mode="aspectFill"/>
+				<image src="/static/image/app/passwd_new.png" mode="aspectFill"/>
 				<view class="pwd">
 					<input :value="newConfirmPwd" @input="onIptNewConfirmPwd" password type="safe-password" maxlength="12" placeholder="请确认新密码"/>
 				</view>

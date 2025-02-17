@@ -2,17 +2,17 @@
 	<view class="layout">
 		<view class="bg">
 			<view class="text">重置密码</view>
-			<image src="/static/image/welcome.png" mode="aspectFill"></image>
+			<image src="/static/image/app/welcome.png" mode="aspectFill"></image>
 		</view>
 		<view class="form">
 			<view class="content">
-				<image src="/static/image/account.png" mode="aspectFill"/>
+				<image src="/static/image/app/account.png" mode="aspectFill"/>
 				<view class="account">
 					<input :value="account" @input="onIptAccount" type="number" maxlength="11" placeholder="请输入手机号"/>
 				</view>
 			</view>
 			<view class="content">
-				<image src="/static/image/code.png" mode="aspectFill"/>
+				<image src="/static/image/app/code.png" mode="aspectFill"/>
 				<view class="code">
 					<input :value="verifyCode" @input="onIptVerifyCode" type="number" placeholder="请输入验证码"/>
 					<view class="vBorder"/>
@@ -22,7 +22,7 @@
 				</view>
 			</view>
 			<view class="content">
-				<image src="/static/image/passwd.png" mode="aspectFill"/>
+				<image src="/static/image/app/passwd.png" mode="aspectFill"/>
 				<view class="newPwd">
 					<input :value="pwd" @input="onIptPwd" password type="safe-password" maxlength="12" placeholder="请输入新密码"/>
 				</view>

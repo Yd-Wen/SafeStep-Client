@@ -6,7 +6,7 @@
 				<view :class="device.deviceStatus==1?'greendot':'reddot'"/>
 				<view class="text">{{device.deviceStatus==1?'可用':'停用'}}</view>
 			</view>
-			<image src="/static/image/device.png" mode="aspectFill"></image>		
+			<image src="/static/image/app/device.png" mode="aspectFill"></image>		
 		</view>
 	</navigator>
 	

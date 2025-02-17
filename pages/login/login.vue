@@ -2,15 +2,15 @@
 	<view class="layout">
 		<view class="bg">
 			<view class="text">登录</view>
-			<image src="/static/image/welcome.png" mode="aspectFill"></image>
+			<image src="/static/image/app/welcome.png" mode="aspectFill"></image>
 		</view>
 		<view class="form">
 			<view class="content">
-				<image src="/static/image/account.png" mode="aspectFill"/>
+				<image src="/static/image/app/account.png" mode="aspectFill"/>
 				<input :value="account" @input="onIptAccount" type="number" maxlength="11" placeholder="请输入手机号"/>
 			</view>
 			<view class="content">
-				<image src="/static/image/passwd.png" mode="aspectFill"/>
+				<image src="/static/image/app/passwd.png" mode="aspectFill"/>
 				<input :value="pwd" @input="onIptPwd" password type="safe-password" maxlength="12" placeholder="请输入密码"/>
 			</view>
 			<view @click="onForgetPwd" class="forgetPwd">忘记密码</view>

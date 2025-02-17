@@ -12,7 +12,7 @@
 defineProps({
 	avatar:{
 		type:String,
-		default:'/static/image/avatar_default.png'
+		default:'/static/image/avatar/avatar_user_default.png'
 	},
 	nickname:{
 		type:String,

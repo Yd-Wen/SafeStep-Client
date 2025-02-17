@@ -14,7 +14,7 @@
 defineProps({
 	url:{
 		type:String,
-		default:'/static/image/logo.png'
+		default:'/static/image/app/logo.png'
 	},
 	text:{
 		type:String,

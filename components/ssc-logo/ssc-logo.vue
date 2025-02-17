@@ -1,6 +1,6 @@
 <template>
 	<view class="logo">
-		<image src="/static/image/logo.png" mode="aspectFill"></image>
+		<image src="/static/image/app/logo.png" mode="aspectFill"></image>
 	</view>
 </template>
 

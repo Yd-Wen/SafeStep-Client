@@ -70,7 +70,7 @@ onShow(() => {
 	
 function onProfile(){
 	uni.navigateTo({
-		url: '/pages/profile/profile',
+		url: '/pages/profile/profile'
 	})
 }
 	

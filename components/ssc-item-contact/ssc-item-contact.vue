@@ -2,7 +2,7 @@
 	<navigator :url="`/pages/detail-contact/detail-contact?contact=${JSON.stringify(contact)}`">
 		<view class="item">
 			<view class="avatar">
-				<image src="/static/image/contact.png" mode="aspectFit"></image>
+				<image src="/static/image/app/contact.png" mode="aspectFit"></image>
 			</view>
 			<view class="detail">
 				<view class="name">{{contact.userName}}</view>

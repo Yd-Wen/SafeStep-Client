@@ -1,6 +1,6 @@
 import {http} from "@/utils/httpUtil.js"
 
-//用户登录
+//获取联系人
 export function getContactListAPI(data) {
 	return http({
 		url: '/contact/find',

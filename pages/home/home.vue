@@ -48,10 +48,10 @@
 			<ssc-title class="ssc-title">
 				<template #name>统计</template>
 				<template #custom>
-					<view class="date">
+					<navigator url="/pages/history-activity/history-activity" open-type="navigate" class="date">
 						<uni-icons type="calendar" size="18" color="#28C76F"/>
 						<view class="text">{{dateStr}}</view>
-					</view>
+					</navigator>
 				</template>
 			</ssc-title>
 			<view class="content">
@@ -125,7 +125,9 @@ function onContact(){
 }
 
 function onActivity(){
-	
+	uni.navigateTo({
+		url:"/pages/history-activity/history-activity"
+	})
 }
 
 function getData() {

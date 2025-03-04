@@ -33,7 +33,7 @@
 <script setup>
 import {onShow, onHide} from '@dcloudio/uni-app';
 import {onMounted, onUnmounted, ref } from 'vue';
-import { getDeviceListAPI } from './api.js'
+import { getUserInfoAPI, getDeviceListAPI } from './api.js'
 
 let timer = null;
 const activityImg = ref(''); //活动对应的图片
@@ -81,12 +81,13 @@ async function loadDevices() {
 		account: account.value
 	})
 	if(result.code == 1) {
-		devices.value = result.data
+		devices.value = result.data;
 		return devices.value[0].deviceCode;
 	}
 }
 
-onMounted(()=>{
+// 建立ws连接
+function setupWs(){
 	uni.connectSocket({
 		url: 'ws://localhost:8080/wsserver/' + userCode.value
 	});
@@ -103,7 +104,7 @@ onMounted(()=>{
 		if(activity.hasActivity) {
 			activityImg.value = '/static/image/activity/activity_'+ activity.activityName.toLowerCase() + '.png'
 			activityDes.value = activity.activityDescription
-			if(activity.activityType==0) descColor.value = '#99E265';
+			if(activity.activityType==0) descColor.value = '#28C76F';
 			else if(activity.activityType==1) descColor.value = '#f0ad4e';
 			else descColor.value = '#dd524d';
 			
@@ -113,12 +114,36 @@ onMounted(()=>{
 			descColor.value = '#707070'
 		}
 	});
+}
+
+onMounted(async ()=>{
+	// 获取用户ID
+	if (!userCode.value) {
+		// 从服务器获取用户信息
+		let result = await getUserInfoAPI({
+			account: account.value
+		});
+		if (result.code == 1) {
+			userCode.value = result.data.userCode;
+			// 更新本地缓存
+			uni.setStorageSync('userInfo', {
+				avatar: result.data.avatar,
+				userCode: result.data.userCode,
+				account: result.data.account,
+				password: result.data.password,
+				userName: result.data.userName,
+				userDescription: result.data.userDescription
+			});
+			setupWs();
+		}
+	}else{
+		setupWs();
+	}
+	
 })
 
 onShow(async ()=>{
-	if (deviceCode.value == '') {
-		deviceCode.value = await loadDevices()
-	}
+	deviceCode.value = await loadDevices();
 	startTimer(deviceCode.value)
 })
 
@@ -135,7 +160,9 @@ onUnmounted(()=>{
 })
 
 function onActivityHistory(){
-	
+	uni.navigateTo({
+		url:'/pages/history-activity/history-activity'
+	})
 }
 
 function onDeviceManage(){
@@ -228,7 +255,5 @@ function onDeviceChanged(e){
 				}
 			}
 		}
-		
-		
 	}
 </style>

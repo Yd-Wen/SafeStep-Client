@@ -26,7 +26,6 @@ defineProps({
 	},
 	img:{
 		type: String,
-		// default: "../../static/image/app/device.png"
 		default: "../../static/image/avatar/avatar_device_default.png"
 	},
 	maskText:{

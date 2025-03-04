@@ -1,28 +1,26 @@
 <template>
-	<view class="bg">
-		<view class="body">
-			<view class="hint">信息</view>
-			<view class="card">
-				<view class="option">
-					<view class="title">姓名</view>
-					<input :value="userName" @input="onIptName" class="contentInput" maxlength="20"/>
-				</view>	
-				<view class="option">
-					<view class="title">电话</view>
-					<input :value="contactPhone" @input="onIptPhone" class="contentInput" maxlength="11"/>
-				</view>	
-				<view class="description">
-					<view class="title">描述</view>
-					<textarea :value="userDescription" @input="onIptDescription" class="content" placeholder="平安步，步步平安！"/>
-				</view>	
+	<view class="body">
+		<view class="hint header">信息</view>
+		<view class="card">
+			<view class="option">
+				<view class="title">姓名</view>
+				<input :value="userName" @input="onIptName" class="contentInput" maxlength="20"/>
+			</view>	
+			<view class="option">
+				<view class="title">电话</view>
+				<input :value="contactPhone" @input="onIptPhone" class="contentInput" maxlength="11"/>
+			</view>	
+			<view class="description">
+				<view class="title">描述</view>
+				<textarea :value="userDescription" @input="onIptDescription" class="content" placeholder="平安步，步步平安！"/>
+			</view>	
+		</view>
+		<view class="update">
+			<view class="btn">
+				<ssc-button-primary @click="onSubmit" text="提交"/>
 			</view>
-			<view class="update">
-				<view class="btn">
-					<ssc-button-primary @click="onSubmit" text="提交"/>
-				</view>
-				<view class="btn">
-					<ssc-button-default @click="onCancel" text="取消"/>
-				</view>
+			<view class="btn">
+				<ssc-button-default @click="onCancel" text="取消"/>
 			</view>
 		</view>
 	</view>
@@ -79,124 +77,104 @@ function onCancel() {
 
 </script>
 
-<style lang="scss" scoped>
-	.bg{
+<style lang="scss" scoped>	
+	.body{
 		width: 100%;
 		height: 100vh;
-		background-color: $ssc-color-bg;
-		.header{
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
+		background-color: $ssc-color-bg;	
+		padding-top: 1rpx;
+		padding-inline: 20rpx;
+		.hint{
+			width: 100%;
+			height: 50rpx;
+			margin: 30rpx 0 10rpx 0;
+			padding-inline-start:20rpx;
+			color: $ssc-color-subtitle;
+			font-size: $ssc-font-size-subtitle;
+		}
+		.hint.header{
+			margin-top: 10rpx;
+		}
+		.card{
+			border: 2rpx solid $ssc-color-card;
+			background-color: $ssc-color-card;
+			border-radius: 20rpx;
 			padding-inline:20rpx;
-			widt: 100%;
-			height: 100rpx;
-			.text{
-				width: 500rpx;
-				height: 60rpx;
-				line-height: 60rpx;
-				color: $ssc-color-title;
-				font-size: $ssc-font-size-title;
-			}
-			.options{
-				width: 120rpx;
-				height: 60rpx;
+			.option{
+				margin-block:20rpx;
 				display: flex;
-				align-items: center;
+				align-items: flex-start;
+				.title{
+					width: 100rpx;
+					margin-inline-end: 5rpx;
+					color: $ssc-color-paragraph;
+					font-size: $ssc-font-size-paragraph;
+					line-height: 80rpx;
+				}
+				.contentInput{
+					flex: 1;
+					height: 80rpx;
+					border: none;
+					border-bottom: 1rpx solid $ssc-color-primary;
+					color: $ssc-color-paragraph;
+					font-size: $ssc-font-size-paragraph;
+				}
+				.content{
+					width: 500rpx;
+					height: 80rpx;
+					padding-left: 10rpx;
+					display: flex;
+					align-items: center;
+					color: $ssc-color-paragraph;
+					font-size: $ssc-font-size-paragraph;				
+					background-color: $ssc-color-disabled;
+				}
+			}
+			.description{
+				width: 100%;
+				.title{
+					width: 100rpx;
+					margin-inline-end: 20rpx;
+					color: $ssc-color-paragraph;
+					font-size: $ssc-font-size-paragraph;
+					line-height: 80rpx;
+				}
+				.content{
+					width: 645rpx;
+					height: 150rpx;
+					margin-top: 20rpx;
+					padding: 10rpx;
+					margin-block-end:20rpx;
+					color: $ssc-color-paragraph;
+					font-size: $ssc-font-size-paragraph;
+					background-color: $ssc-color-text-bg;
+				}
+			}
+			.status{
+				margin-block:20rpx;
+				display: flex;
+				align-items: center; //垂直居中
 				justify-content: space-between;
+				.title{
+					width: 150rpx;
+					margin-inline-end: 20rpx;
+					color: $ssc-color-paragraph;
+					font-size: $ssc-font-size-paragraph;
+				}
+				switch{
+					
+				}
 			}
 		}
-		
-		.body{
-			width: 100%;
-			padding-inline: 20rpx;
-			.hint{
-				width: 100%;
-				height: 50rpx;
-				margin: 10rpx;
-				padding-inline-start:20rpx;
-				color: $ssc-color-subtitle;
-				font-size: $ssc-font-size-subtitle;
-			}
-			.card{
-				border: 2rpx solid $ssc-color-card;
-				background-color: $ssc-color-card;
-				border-radius: 20rpx;
-				padding-inline:20rpx;
-				.option{
-					margin-block:20rpx;
-					display: flex;
-					align-items: center; //垂直居中
-					.title{
-						width: 150rpx;
-						margin-inline-end: 20rpx;
-						color: $ssc-color-paragraph;
-						font-size: $ssc-font-size-paragraph;
-					}
-					.contentInput{
-						width: 500rpx;
-						height: 80rpx;
-						border: none;
-						border-bottom: 1rpx solid $ssc-color-primary;
-						color: $ssc-color-paragraph;
-						font-size: $ssc-font-size-paragraph;
-					}
-					.content{
-						width: 500rpx;
-						height: 80rpx;
-						padding-left: 10rpx;
-						display: flex;
-						align-items: center;
-						color: $ssc-color-paragraph;
-						font-size: $ssc-font-size-paragraph;				
-						background-color: $ssc-color-disabled;
-					}
-				}
-				.description{
-					width: 100%;
-					.title{
-						width: 150rpx;
-						margin-inline-end: 20rpx;
-						color: $ssc-color-paragraph;
-						font-size: $ssc-font-size-paragraph;
-					}
-					.content{
-						width: 645rpx;
-						height: 150rpx;
-						margin-top: 20rpx;
-						padding: 10rpx;
-						margin-block-end:20rpx;
-						color: $ssc-color-paragraph;
-						font-size: $ssc-font-size-paragraph;
-						background-color: $ssc-color-text-bg;
-					}
-				}
-				.status{
-					margin-block:20rpx;
-					display: flex;
-					align-items: center; //垂直居中
-					justify-content: space-between;
-					.title{
-						width: 150rpx;
-						margin-inline-end: 20rpx;
-						color: $ssc-color-paragraph;
-						font-size: $ssc-font-size-paragraph;
-					}
-					switch{
-						
-					}
-				}
-			}
-			.update{
-				display: flex; 
-				align-items: center; //水平居中
-				justify-content: center; //垂直居中
-				flex-direction: column; //换行显示
-				margin-top: 50rpx;
-				.btn{
-					width: 600rpx;
-					margin-top: 20rpx;
-				}
+		.update{
+			display: flex; 
+			align-items: center; //水平居中
+			justify-content: center; //垂直居中
+			flex-direction: column; //换行显示
+			margin-top: 50rpx;
+			.btn{
+				width: 600rpx;
+				margin-top: 20rpx;
 			}
 		}
 	}

@@ -93,3 +93,45 @@ export function getBlob(filePath) {
 		});
 	});
 }
+
+export const opts = {
+	enableScroll: true,
+	scrollPosition: "right",
+	dataLabel: false,
+	xAxis: {
+		disableGrid: true,
+		scrollShow: true,
+		scrollAlign: "right",
+		itemCount: 25,
+		labelCount: 5,
+		rotateLabel: true,
+		fontSize: 10,
+		marginTop: 2,
+		title: "时间",
+		titleOffsetX: -10
+	},
+	yAxis: {
+		disableGrid: true,
+		splitNumber: 3,
+		title: "活动风险等级",
+		titleOffsetY: 10,
+		data: [
+			{
+				min: 0,
+				max: 3
+			}
+		]
+	},
+	legend: {
+		show: false
+	},
+	extra: {
+		column: {
+			type: "group",
+			width: 5
+		},
+		tooltip: {
+			legendShow: false
+		}
+	}
+}

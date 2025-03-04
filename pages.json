@@ -67,14 +67,14 @@
 			"path" : "pages/list-contact/list-contact",
 			"style" : 
 			{
-				"navigationBarTitleText" : "我的联系人"
+				"navigationBarTitleText" : "联系人"
 			}
 		},
 		{
 			"path" : "pages/list-device/list-device",
 			"style" : 
 			{
-				"navigationBarTitleText" : "我的设备"
+				"navigationBarTitleText" : "设备"
 			}
 		},
 		{
@@ -110,6 +110,34 @@
 			"style" : 
 			{
 				"navigationBarTitleText" : "添加联系人"
+			}
+		},
+		{
+			"path" : "pages/history-activity/history-activity",
+			"style" : 
+			{
+				"navigationBarTitleText" : "活动历史"
+			}
+		},
+		{
+			"path" : "pages/list-alarm/list-alarm",
+			"style" : 
+			{
+				"navigationBarTitleText" : "报警历史"
+			}
+		},
+		{
+			"path" : "pages/detail-alarm/detail-alarm",
+			"style" : 
+			{
+				"navigationBarTitleText" : "报警详情"
+			}
+		},
+		{
+			"path" : "pages/omission-alarm/omission-alarm",
+			"style" : 
+			{
+				"navigationBarTitleText" : "漏报反馈"
 			}
 		}
 	],

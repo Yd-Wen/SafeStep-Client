@@ -13,9 +13,11 @@
 			<view class="border"/>
 			<ssc-option @on-navigate="onListContact" url='/static/image/setting/contact.png' text='联系人管理'/>
 			<view class="border"/>
-			<ssc-option url='/static/image/setting/activity.png' text='活动历史' class="last"/>
+			<ssc-option @on-navigate="onHistoryActivity" url='/static/image/setting/activity.png' text='活动历史' class="last"/>
 			<view class="border"/>
-			<ssc-option url='/static/image/setting/alarm.png' text='报警历史' class="last"/>
+			<ssc-option  @on-navigate="onListAlarm" url='/static/image/setting/alarm.png' text='报警历史' class="last"/>
+			<view class="border"/>
+			<ssc-option  @on-navigate="onOmissionAlarm" url='/static/image/setting/alarm_omission.png' text='漏报反馈' class="last"/>
 			<view class="border"/>
 			<ssc-option url='/static/image/setting/alarm_mode.png' text='报警方式' class="last"/>
 		</view>	
@@ -89,6 +91,24 @@ function onListDevice(){
 function onListContact(){
 	uni.navigateTo({
 		url: '/pages/list-contact/list-contact'
+	})
+}
+
+function onHistoryActivity(){
+	uni.navigateTo({
+		url: '/pages/history-activity/history-activity'
+	})
+}
+
+function onListAlarm(){
+	uni.navigateTo({
+		url: '/pages/list-alarm/list-alarm'
+	})
+}
+
+function onOmissionAlarm(){
+	uni.navigateTo({
+		url: '/pages/omission-alarm/omission-alarm'
 	})
 }
 

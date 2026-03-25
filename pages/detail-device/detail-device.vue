@@ -24,7 +24,7 @@
 				</view>	
 				<view class="description">
 					<view class="title">设备描述</view>
-					<textarea :disabled="!isEdit" :value="device.deviceDescription" @input="onIptDescription" class="content" placeholder="平安步，步步平安！"/>
+					<textarea :disabled="!isEdit" :value="device.deviceDescription" @input="onIptDescription" class="content" placeholder="步步安，步步平安！"/>
 				</view>	
 			</view>
 			<view class="hint">位置</view>

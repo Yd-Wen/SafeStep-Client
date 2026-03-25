@@ -28,7 +28,7 @@
 				</view>	
 				<view class="description">
 					<view class="title">描述</view>
-					<textarea :disabled="!isEdit" :value="contact.userDescription" @input="onIptDescription" class="content" placeholder="平安步，步步平安！"/>
+					<textarea :disabled="!isEdit" :value="contact.userDescription" @input="onIptDescription" class="content" placeholder="步步安，步步平安！"/>
 				</view>	
 			</view>
 			<view v-if="isEdit" class="update">

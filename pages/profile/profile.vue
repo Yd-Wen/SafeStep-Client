@@ -19,7 +19,7 @@
 			</view>	
 			<view class="description">
 				<view class="title">简介</view>
-				<textarea :value="user.userDescription" @input="onIptDescription" class="content" placeholder="平安步，步步平安！"/>
+				<textarea :value="user.userDescription" @input="onIptDescription" class="content" placeholder="步步安，步步平安！"/>
 			</view>	
 		</view>
 		<view class="btn">

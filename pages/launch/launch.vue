@@ -8,7 +8,7 @@
         </view>
         <view class="context">
           <view class="tit">
-            平安步APP
+            步步安APP
           </view>
           <view class="desc">
             — 监测记录 即刻查看 —
@@ -21,7 +21,7 @@
         </view>
         <view class="context">
           <view class="tit">
-            平安步APP
+            步步安APP
           </view>
           <view class="desc">
             — 危险状态 即刻推送 —

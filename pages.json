@@ -143,7 +143,7 @@
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
-		"navigationBarTitleText": "平安步APP",
+		"navigationBarTitleText": "步步安",
 		"navigationBarBackgroundColor": "#28C76F"
 	},
 	"uniIdRouter": {},

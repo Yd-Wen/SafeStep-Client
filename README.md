@@ -151,7 +151,7 @@ SafeStep-Client/
 1. **克隆项目**
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Yd-Wen/SafeStep-Client.git
 cd SafeStep-Client
 ```
 
@@ -234,6 +234,9 @@ uni.connectSocket({
 
 ## 更新日志
 
+### v1.0.1 (2026-03-25)
+- 新增项目配置和说明
+
 ### v1.0.0 (2025-03-04)
 
 **新增功能**
@@ -273,14 +276,16 @@ uni.connectSocket({
 
 ## 许可证
 
-[MIT](LICENSE)
+本项目基于 [MIT](LICENSE) License 开源。
 
-## 联系方式
+Copyright (C) 2026 - present by Yd Wen
 
-- 项目主页：[GitHub Repository](<your-repo-url>)
-- 问题反馈：[Issues](<your-repo-url>/issues)
+## 作者
 
----
+- **Yd Wen** 
+  - [GitHub](https://github.com/Yd-Wen)
+  - [Gitee](https://gitee.com/yindong-wen)
+  - [个人主页](https://yindongwen.top)
 
 <p align="center">
   步步安，让独居老人的每一步都平安
